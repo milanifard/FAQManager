@@ -1,11 +1,11 @@
-DROP database IF EXISTS sadaf;
+DROP database IF EXISTS sadaf_faq;
 
-create database sadaf char set utf8 collate utf8_persian_ci;
+create database sadaf_faq char set utf8 collate utf8_persian_ci;
 
-use sadaf;
+use sadaf_faq;
 
-DROP TABLE IF EXISTS `sadaf`.`AccountSpecs`;
-CREATE TABLE  `sadaf`.`AccountSpecs` (
+DROP TABLE IF EXISTS `sadaf_faq`.`AccountSpecs`;
+CREATE TABLE  `sadaf_faq`.`AccountSpecs` (
   `AccountSpecID` int(11) NOT NULL AUTO_INCREMENT,
   `UserID` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
   `UserPassword` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
@@ -13,30 +13,30 @@ CREATE TABLE  `sadaf`.`AccountSpecs` (
   PRIMARY KEY (`AccountSpecID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`EMonArray`;
-CREATE TABLE  `sadaf`.`EMonArray` (
+DROP TABLE IF EXISTS `sadaf_faq`.`EMonArray`;
+CREATE TABLE  `sadaf_faq`.`EMonArray` (
   `_id` int(11) NOT NULL,
   `emon` int(11) DEFAULT NULL,
   PRIMARY KEY (`_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`FacilityPages`;
-CREATE TABLE  `sadaf`.`FacilityPages` (
+DROP TABLE IF EXISTS `sadaf_faq`.`FacilityPages`;
+CREATE TABLE  `sadaf_faq`.`FacilityPages` (
   `FacilityPageID` int(11) NOT NULL AUTO_INCREMENT,
   `FacilityID` int(11) DEFAULT NULL,
   `PageName` varchar(145) COLLATE utf8_persian_ci DEFAULT NULL,
   PRIMARY KEY (`FacilityPageID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`FMonArray`;
-CREATE TABLE  `sadaf`.`FMonArray` (
+DROP TABLE IF EXISTS `sadaf_faq`.`FMonArray`;
+CREATE TABLE  `sadaf_faq`.`FMonArray` (
   `_id` int(11) NOT NULL,
   `fmon` int(11) DEFAULT NULL,
   PRIMARY KEY (`_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`persons`;
-CREATE TABLE  `sadaf`.`persons` (
+DROP TABLE IF EXISTS `sadaf_faq`.`persons`;
+CREATE TABLE  `sadaf_faq`.`persons` (
   `PersonID` int(11) NOT NULL AUTO_INCREMENT,
   `pfname` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
   `plname` varchar(45) COLLATE utf8_persian_ci DEFAULT NULL,
@@ -44,8 +44,8 @@ CREATE TABLE  `sadaf`.`persons` (
   PRIMARY KEY (`PersonID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`SysAudit`;
-CREATE TABLE  `sadaf`.`SysAudit` (
+DROP TABLE IF EXISTS `sadaf_faq`.`SysAudit`;
+CREATE TABLE  `sadaf_faq`.`SysAudit` (
   `RecID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `UserID` varchar(15) COLLATE utf8_persian_ci DEFAULT NULL,
   `ActionType` tinyint(3) unsigned DEFAULT NULL,
@@ -58,8 +58,8 @@ CREATE TABLE  `sadaf`.`SysAudit` (
   KEY `UserID` (`UserID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`SystemDBLog`;
-CREATE TABLE  `sadaf`.`SystemDBLog` (
+DROP TABLE IF EXISTS `sadaf_faq`.`SystemDBLog`;
+CREATE TABLE  `sadaf_faq`.`SystemDBLog` (
   `RecID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `page` varchar(200) COLLATE utf8_persian_ci DEFAULT NULL COMMENT 'صفحه',
   `query` text COLLATE utf8_persian_ci COMMENT 'پرس و جو',
@@ -75,15 +75,15 @@ CREATE TABLE  `sadaf`.`SystemDBLog` (
   KEY `UserID` (`UserID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`SpecialPages`;
-CREATE TABLE  `sadaf`.`SpecialPages` (
+DROP TABLE IF EXISTS `sadaf_faq`.`SpecialPages`;
+CREATE TABLE  `sadaf_faq`.`SpecialPages` (
   `SpecialPageID` int(11) NOT NULL AUTO_INCREMENT,
   `PageName` varchar(245) COLLATE utf8_persian_ci DEFAULT NULL,
   PRIMARY KEY (`SpecialPageID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`SystemFacilities`;
-CREATE TABLE  `sadaf`.`SystemFacilities` (
+DROP TABLE IF EXISTS `sadaf_faq`.`SystemFacilities`;
+CREATE TABLE  `sadaf_faq`.`SystemFacilities` (
   `FacilityID` int(11) NOT NULL AUTO_INCREMENT,
   `FacilityName` varchar(245) COLLATE utf8_persian_ci DEFAULT NULL,
   `GroupID` int(11) DEFAULT NULL,
@@ -92,45 +92,45 @@ CREATE TABLE  `sadaf`.`SystemFacilities` (
   PRIMARY KEY (`FacilityID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`SystemFacilityGroups`;
-CREATE TABLE  `sadaf`.`SystemFacilityGroups` (
+DROP TABLE IF EXISTS `sadaf_faq`.`SystemFacilityGroups`;
+CREATE TABLE  `sadaf_faq`.`SystemFacilityGroups` (
   `GroupID` int(11) NOT NULL AUTO_INCREMENT,
   `GroupName` varchar(145) COLLATE utf8_persian_ci DEFAULT NULL,
   `OrderNo` int(11) DEFAULT NULL,
   PRIMARY KEY (`GroupID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-DROP TABLE IF EXISTS `sadaf`.`UserFacilities`;
-CREATE TABLE  `sadaf`.`UserFacilities` (
+DROP TABLE IF EXISTS `sadaf_faq`.`UserFacilities`;
+CREATE TABLE  `sadaf_faq`.`UserFacilities` (
   `FacilityPageID` int(11) NOT NULL AUTO_INCREMENT,
   `UserID` varchar(100) COLLATE utf8_persian_ci DEFAULT NULL,
   `FacilityID` int(11) DEFAULT NULL,
   PRIMARY KEY (`FacilityPageID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
-INSERT INTO sadaf.SpecialPages VALUES (1,'main.php'),(2,'/main.php'),(3,'/Menu.php'),(4,'/MainContent.php'),(5,'/ChangePassword.php'),(6,'/MyActions.php'),(7,'/SelectPersonel.php'),(8,'/SelectCustomer.php'),(9,'/SelectStaff.php'),(10,'/GetExamItemPrice.php');
+INSERT INTO sadaf_faq.SpecialPages VALUES (1,'main.php'),(2,'/main.php'),(3,'/Menu.php'),(4,'/MainContent.php'),(5,'/ChangePassword.php'),(6,'/MyActions.php'),(7,'/SelectPersonel.php'),(8,'/SelectCustomer.php'),(9,'/SelectStaff.php'),(10,'/GetExamItemPrice.php');
 
 
-insert into sadaf.persons (pfname, plname, CardNumber) values ('اميد', 'ميلاني فرد', '0');
+insert into sadaf_faq.persons (pfname, plname, CardNumber) values ('اميد', 'ميلاني فرد', '0');
 
-insert into sadaf.AccountSpecs (UserID, UserPassword, PersonID) values ('omid', 'omid3000', 1);
+insert into sadaf_faq.AccountSpecs (UserID, UserPassword, PersonID) values ('omid', 'omid3000', 1);
 
-INSERT INTO sadaf.SystemFacilityGroups VALUES (1,'مدیریت',1),(2,'عملیات کاری',3),(3,'گزارشات',4);
+INSERT INTO sadaf_faq.SystemFacilityGroups VALUES (1,'مدیریت',1),(2,'عملیات کاری',3),(3,'گزارشات',4);
 
-INSERT INTO sadaf.SystemFacilities VALUES (1,'مدیریت افراد',1,3,'Managepersons.php'),(3,'مدیریت امکانات',1,2,'ManageSystemFacilities.php'),(4,'مدیریت گروه های منو',1,1,'ManageSystemFacilityGroups.php'),(5,'مدیریت کاربران',1,4,'ManageAccountSpecs.php');
+INSERT INTO sadaf_faq.SystemFacilities VALUES (1,'مدیریت افراد',1,3,'Managepersons.php'),(3,'مدیریت امکانات',1,2,'ManageSystemFacilities.php'),(4,'مدیریت گروه های منو',1,1,'ManageSystemFacilityGroups.php'),(5,'مدیریت کاربران',1,4,'ManageAccountSpecs.php');
 
-INSERT INTO sadaf.UserFacilities VALUES (1,'omid',1),(2,'omid',3),(3,'omid',4),(4,'omid',5);
+INSERT INTO sadaf_faq.UserFacilities VALUES (1,'omid',1),(2,'omid',3),(3,'omid',4),(4,'omid',5);
 
-INSERT INTO sadaf.EMonArray VALUES (1,31),(2,28),(3,31),(4,30),(5,31),(6,30),(7,31),(8,31),(9,30),(10,31),(11,30),(12,31);
+INSERT INTO sadaf_faq.EMonArray VALUES (1,31),(2,28),(3,31),(4,30),(5,31),(6,30),(7,31),(8,31),(9,30),(10,31),(11,30),(12,31);
 
-INSERT INTO sadaf.FMonArray VALUES (1,31),(2,31),(3,31),(4,31),(5,31),(6,31),(7,30),(8,30),(9,30),(10,30),(11,30),(12,29);
+INSERT INTO sadaf_faq.FMonArray VALUES (1,31),(2,31),(3,31),(4,31),(5,31),(6,31),(7,30),(8,30),(9,30),(10,30),(11,30),(12,29);
 
-INSERT INTO sadaf.FacilityPages VALUES (9,5,'/ManageAccountSpecs.php'),(3,3,'/ManageSystemFacilities.php'),(4,3,'/ManageFacilityPages.php'),(5,3,'/ManageSystemFacilities.php'),(6,3,'/ManageUserFacilities.php'),(7,4,'/ManageSystemFacilityGroups.php'),(8,1,'/Managepersons.php'),(48,12,'/GetJasonData.php'),(25,5,'/ManageUserPermissions.php');
+INSERT INTO sadaf_faq.FacilityPages VALUES (9,5,'/ManageAccountSpecs.php'),(3,3,'/ManageSystemFacilities.php'),(4,3,'/ManageFacilityPages.php'),(5,3,'/ManageSystemFacilities.php'),(6,3,'/ManageUserFacilities.php'),(7,4,'/ManageSystemFacilityGroups.php'),(8,1,'/Managepersons.php'),(48,12,'/GetJasonData.php'),(25,5,'/ManageUserPermissions.php');
 
 DELIMITER $$
 
-DROP FUNCTION IF EXISTS `sadaf`.`g2j`$$
-CREATE FUNCTION  `sadaf`.`g2j`(_edate  date) RETURNS varchar(10) CHARSET utf8
+DROP FUNCTION IF EXISTS `sadaf_faq`.`g2j`$$
+CREATE FUNCTION  `sadaf_faq`.`g2j`(_edate  date) RETURNS varchar(10) CHARSET utf8
     DETERMINISTIC
 BEGIN
 declare gy,gm,gd    int ;
@@ -186,8 +186,8 @@ DELIMITER ;
 
 DELIMITER $$
 
-DROP FUNCTION IF EXISTS `sadaf`.`j2g`$$
-CREATE FUNCTION  `sadaf`.`j2g`(j_y int , j_m int , j_d  int ) RETURNS varchar(10) CHARSET utf8
+DROP FUNCTION IF EXISTS `sadaf_faq`.`j2g`$$
+CREATE FUNCTION  `sadaf_faq`.`j2g`(j_y int , j_m int , j_d  int ) RETURNS varchar(10) CHARSET utf8
     DETERMINISTIC
 BEGIN
 
