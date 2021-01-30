@@ -1,5 +1,6 @@
 <?php
-include "header.inc.php";
+require_once "header.inc.php";
+require_once "classes/FAQ.php";
 
 HTMLBegin();
 
@@ -9,6 +10,9 @@ if (isset($_GET["save"])){
     echo($_GET["answer"]);
     echo("<br>");
     echo($_GET["click_count"]);
+
+    $faq = FAQ::getNewInstance($_GET["title"], $_GET["answer"], $_GET["click_count"]);
+    FAQ::add($faq);
 }
 
 ?>
@@ -27,5 +31,25 @@ if (isset($_GET["save"])){
             <input type="submit" name="save" id="save" value="ذخیره">
         </div>
     </form>
+
+    <table style="width: 100%">
+        <tr>
+            <th>شناسه</th>
+            <th>سوال</th>
+            <th>جواب</th>
+            <th>تعداد کلیک</th>
+        </tr>
+<?php
+    $faqs = FAQ::getAll(0);
+    foreach ($faqs as $f) {
+        echo("<tr>");
+        echo("<td>".$f->id."</td>");
+        echo("<td>".$f->title."</td>");
+        echo("<td>".$f->answer."</td>");
+        echo("<td>".$f->click_count."</td>");
+        echo("</tr>");
+    }
+?>
+    </table>
 </body>
 </html>
