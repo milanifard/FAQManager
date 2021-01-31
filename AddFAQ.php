@@ -38,6 +38,7 @@ if (isset($_GET["save"])){
             <th>سوال</th>
             <th>جواب</th>
             <th>تعداد کلیک</th>
+            <th>عملیات</th>
         </tr>
 <?php
     $faqs = FAQ::getAll(0);
@@ -47,6 +48,7 @@ if (isset($_GET["save"])){
         echo("<td>".$f->title."</td>");
         echo("<td>".$f->answer."</td>");
         echo("<td>".$f->click_count."</td>");
+        echo("<td><a target=\"_blank\" href=\"AtachKeyword.php?faq=".$f->id."\">کلمات کلیدی</a></td>");
         echo("</tr>");
     }
 ?>

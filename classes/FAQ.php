@@ -44,4 +44,16 @@ class FAQ
         }
         return $faqs;
     }
+
+    static function getById($id) {
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("select * from faqs where id = ?;");
+        $result = $mysql->ExecuteStatement(array($id));
+        
+        if ($row = $result->fetch()){
+            return self::toFAQ($row);
+        }
+
+        return null;
+    }
 }
