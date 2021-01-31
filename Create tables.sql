@@ -17,6 +17,14 @@ create table user_groups(
 	title text not null,
 	persian_title text not null
 );
+insert into user_groups (title, persian_title)
+values ('STUDENT', 'دانشجو');
+insert into user_groups (title, persian_title)
+values ('STAFF', 'کارمند');
+insert into user_groups (title, persian_title)
+values ('PROF', 'پرفسور');
+insert into user_groups (title, persian_title)
+values ('OTHER', 'سایر');
 
 drop table if exists faq_user_groups;
 create table faq_user_groups(
