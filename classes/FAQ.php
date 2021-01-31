@@ -20,6 +20,13 @@ class FAQ
         $mysql = pdodb::getInstance();
         $mysql->Prepare("insert into faqs (title, answer, click_count) values (?, ?, ?);");
         $mysql->ExecuteStatement(array($faq->title, $faq->answer, $faq->click_count));
+        
+        $mysql->Prepare("select last_insert_id() as id;");
+        $result = $mysql->ExecuteStatement(array());
+        $row = $result->fetch();
+        
+        $faq->id = $row["id"];
+        return $faq;
     }
 
     static function toFAQ($row){
