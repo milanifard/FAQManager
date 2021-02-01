@@ -63,4 +63,23 @@ class FAQ
 
         return null;
     }
+
+    static function getRelatedFAQ($title, $description, $page, $userGroup){
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("select distinct f.*
+        from keywords k
+        inner join faqs_keywords fk on k.id = fk.keyword_id
+        inner join faqs f on fk.faq_id= f.id
+        inner join faq_user_groups fug on f.id = fug.faq_id
+        where (? like CONCAT('%',term,'%') 
+        or ? like CONCAT('%',term,'%'))
+        and fug.user_group_id = ?;");
+        $result = $mysql->ExecuteStatement(array($title, $description, $userGroup->id));
+
+        $faqs = array();
+        while($row = $result->fetch()){
+            array_push($faqs, self::toFAQ($row));
+        }
+        return $faqs;
+    }
 }
