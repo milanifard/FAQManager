@@ -17,14 +17,15 @@ class Page{
     }
 
     public function exists($faq_id, $page_id){
-        $mysql->Prepare("select * from faq_pages faq_id = ? and page_id = ?;");
+        $mysql->Prepare("select * from faq_pages where faq_id = ? and page_id = ?;");
         $result = $mysql->ExecuteStatement(array($faq_id, $page_id));
         if($result->fetch())
             return false;
         return true;
+
     }
 
-    public function attachPageToFAQ($faq, $page_title, $page_url){
+    static function attachPageToFAQ($faq, $page_title, $page_url){
         $mysql = pdodb::getInstance();
         $mysql->Prepare("select * from pages where title = ? and url = ?;");
         $result = $mysql->ExecuteStatement(array($page_title, $page_url));
@@ -43,10 +44,9 @@ class Page{
         }
 
         
-        if(!exists($faq->id, $page->id)){
-            $mysql->Prepare("insert into faq_pages (faq_id, page_id) values (?,?);");
-            $result = $mysql->ExecuteStatement(array($faq->id, $page->id));
-        }
+        $mysql->Prepare("insert into faq_pages (faq_id, page_id) values (?,?);");
+        $result = $mysql->ExecuteStatement(array($faq->id, $page->id));
+        
     }
 
     static function getAllPagesByFAQ($faq){
@@ -54,11 +54,13 @@ class Page{
         $mysql->Prepare("select p.* from faq_pages inner join pages p on faq_pages.page_id = p.id where faq_id = ?;");
         $result = $mysql->ExecuteStatement(array($faq->id));
 
-        $keywords = array();
+        $pages = array();
         while($row = $result->fetch()){
-            array_push($keywords, self::toPage($row));
+            // print_r($row);
+            array_push($pages, self::toPage($row));
         }
-        return $keywords;
+        // print_r($pages);
+        return $pages;
     }
 }
 
