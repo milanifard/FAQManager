@@ -63,6 +63,7 @@ if (isset($_GET["save"])){
         echo("<td>".$f->answer."</td>");
         echo("<td>".$f->click_count."</td>");
         echo("<td><a target=\"_blank\" href=\"AtachKeyword.php?faq=".$f->id."\">کلمات کلیدی</a></td>");
+        echo("<td><a target=\"_blank\" href=\"AttachPage.php?faq=".$f->id."\">صفحات</a></td>");
         echo("</tr>");
     }
 ?>
