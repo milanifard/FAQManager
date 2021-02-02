@@ -50,5 +50,41 @@ class Keyword
         $result = $mysql->ExecuteStatement(array($faq->id, $keyword->id));
     
     }
+
+    static function changeAssingeState($faqId, $keywordId, $newState){
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("update faqs_keywords 
+        set state = ?
+        where faq_id = ?
+        and keyword_id = ?");
+        $mysql->ExecuteStatement(array($newState, $faqId, $keywordId));
+    }
+
+    static function getSuggestedKeyword(){
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("select k.id as keyword_id,
+                        k.term,
+                        f.*
+                        from keywords k
+                        inner join faqs_keywords fk on k.id = fk.keyword_id
+                        inner join faqs f on fk.faq_id = f.id
+                        where fk.state = 0;");
+        $result = $mysql->ExecuteStatement(array());
+
+        $keyword_faq = array();
+        while($row = $result->fetch()){
+            $keyword = new Keyword();
+            $keyword->id = $row["keyword_id"];
+            $keyword->term = $row["term"];
+
+            $faq = FAQ::toFAQ($row);
+
+            $o["keyword"] = $keyword;
+            $o["faq"] = $faq;
+
+            array_push($keyword_faq, $o);
+        }
+        return $keyword_faq;
+    }
 }
 ?>
