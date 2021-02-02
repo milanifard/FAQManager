@@ -22,7 +22,24 @@ if (isset($_GET["send"])){
 
     
     $faqs = FAQ::getRelatedFAQ($_GET["title"], $_GET["description"], null, $userGroup);
-    echo(count($faqs));
+
+    if (count($faqs) > 0){
+        echo("<div>");
+        echo("<div>".htmlentities($_GET["title"])."</div>");
+        echo("<div>".htmlentities($_GET["description"])."</div>");
+        echo("</div>");
+        
+        echo("<div>");
+        foreach ($faqs as $f){
+            echo("<div><a href=\"google.com\">".htmlentities($f->title)."</a></div>");
+        }
+        echo("</div>");
+
+    } else {
+        //todo save ticket
+        echo("هیچی پیدا نشد");
+    }
+
 
 }else{
     echo("<form method=\"get\">
