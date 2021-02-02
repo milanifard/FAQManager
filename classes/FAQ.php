@@ -73,7 +73,10 @@ class FAQ
         inner join faq_user_groups fug on f.id = fug.faq_id
         where (? like CONCAT('%',term,'%') 
         or ? like CONCAT('%',term,'%'))
-        and fug.user_group_id = ?;");
+        and fug.user_group_id = ? 
+        and fk.state = 1;");
+        // add page limit
+
         $result = $mysql->ExecuteStatement(array($title, $description, $userGroup->id));
 
         $faqs = array();
@@ -81,5 +84,25 @@ class FAQ
             array_push($faqs, self::toFAQ($row));
         }
         return $faqs;
+    }
+
+    function increaseClickCount(){
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("update faqs
+        set click_count = click_count + 1
+        where id = ?");
+        $mysql->ExecuteStatement(array($this->id));
+    }
+
+    function addUsefullKeyword($title, $description){
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("insert into faqs_keywords(faq_id, keyword_id)
+        select ?, k.id
+        from keywords k
+        left join faqs_keywords fk on k.id = fk.keyword_id and fk.faq_id = ?
+        where (? like CONCAT('%',term,'%')
+        or ? like CONCAT('%',term,'%'))
+        and fk.id is null");
+        $mysql->ExecuteStatement(array($this->id, $this->id, $title, $description));
     }
 }

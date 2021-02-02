@@ -31,10 +31,11 @@ if (isset($_GET["send"])){
         
         echo("<div>");
         foreach ($faqs as $f){
-            echo("<div><a href=\"google.com\">".htmlentities($f->title)."</a></div>");
+            echo("<div><a href=\"ShowFAQ.php?id=".$f->id."&description=".$_GET["description"]."&title=".$_GET["title"]."\">".htmlentities($f->title)."</a></div>");
         }
         echo("</div>");
 
+        //todo add save ticket buttom
     } else {
         //todo save ticket
         echo("هیچی پیدا نشد");
