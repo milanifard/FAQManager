@@ -11,7 +11,7 @@ function FAQHTMLBegins($title = 'تیکتینگ')
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title><?php echo $title; ?></title>
-        <link rel="stylesheet" href="css/faq.css"/>
+        <link rel="stylesheet" href="assets/css/faq.css"/>
 
     </head>
     <body>
@@ -22,6 +22,7 @@ function FAQHTMLBegins($title = 'تیکتینگ')
 function FAQHTMLEnds()
 {
     ?>
+    <script src="assets/js/faq.js"></script>
     </body>
     </html>
     <?php
