@@ -67,14 +67,14 @@ if ($showTickForm) {
 
     $userGroups = UserGroup::getAll();
     foreach ($userGroups as $u){
-        echo("<option value=\"".$u->id."\">".$u->persionTitle."</option>");
+        echo("<option value=\"".$u->id."\">".htmlentities($u->persionTitle)."</option>");
     }
     echo("</select>");
     
     $pages = Page::getAll();
     echo("<select name=\"page\" id=\"page\">");
     foreach ($pages as $p){
-        echo("<option value=\"".$p->id."\">".$p->title."</option>");
+        echo("<option value=\"".$p->id."\">".htmlentities($p->title)."</option>");
     }
     echo("</select>");
 
