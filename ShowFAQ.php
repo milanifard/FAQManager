@@ -1,7 +1,9 @@
 <?php
 require_once "header.inc.php";
 require_once "classes/FAQ.php";
-HTMLBegin();
+require_once "classes/Helpers.php";
+
+FAQHTMLBegins();
 
 if (!isset($_GET["id"])){
     return;
@@ -35,7 +37,4 @@ if (isset($_GET["usefull"])){
     $faq->addUsefullKeyword($_GET["description"], $_GET["title"]);
 }
 
-?>
-
-</body>
-</html>
+FAQHTMLEnds();

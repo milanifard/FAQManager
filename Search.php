@@ -1,9 +1,9 @@
 <?php
 require_once "header.inc.php";
 require_once "classes/Ticket.php";
+require_once "classes/Helpers.php";
 
-HTMLBegin();
-
+FAQHTMLBegins();
 ?>
 
 <div>
@@ -14,35 +14,29 @@ HTMLBegin();
 </div>
 
 <table style="width: 100%;">
-<tr>
-<th>شناسه</th>
-<th>عنوان</th>
-<th>توضیحات</th>
-<th>تاریخ</th>
-</tr>
+    <tr>
+        <th>شناسه</th>
+        <th>عنوان</th>
+        <th>توضیحات</th>
+        <th>تاریخ</th>
+    </tr>
 
-<?php
- 
-$tickets = null;
+    <?php
 
-if (isset($_GET["search"])){
-    $tickets = Ticket::getAllByContainsTerm($_GET["term"]);
-}else{
-    $tickets = Ticket::getAll();
-}
+    $tickets = null;
 
-foreach ($tickets as $t){
-    echo("<tr>");
-    echo("<td>".htmlentities($t->id)."</td>");
-    echo("<td>".htmlentities($t->title)."</td>");
-    echo("<td>".htmlentities($t->description)."</td>");
-    echo("<td>".htmlentities($t->time)."</td>");
-    echo("</tr>");
-}
+    if (isset($_GET["search"])){
+        $tickets = Ticket::getAllByContainsTerm($_GET["term"]);
+    }else{
+        $tickets = Ticket::getAll();
+    }
 
-?>
-
-</table>
-
-</body>
-</html>
+    foreach ($tickets as $t){
+        echo("<tr>");
+        echo("<td>".htmlentities($t->id)."</td>");
+        echo("<td>".htmlentities($t->title)."</td>");
+        echo("<td>".htmlentities($t->description)."</td>");
+        echo("<td>".htmlentities($t->time)."</td>");
+        echo("</tr>");
+    }
+FAQHTMLEnds();

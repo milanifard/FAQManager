@@ -4,8 +4,9 @@ require_once "classes/FAQ.php";
 require_once "classes/Page.php";
 require_once "classes/UserGroup.php";
 require_once "classes/Ticket.php";
+require_once "classes/Helpers.php";
 
-HTMLBegin();
+FAQHTMLBegins();
 
 $showTickForm = true;
 
@@ -87,6 +88,4 @@ if ($showTickForm) {
 </form>");
 }
 
-?>
-</body>
-</html>
+FAQHTMLEnds();

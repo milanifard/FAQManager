@@ -1,7 +1,9 @@
 <?php
 require_once "header.inc.php";
 require_once "classes/Keyword.php";
-HTMLBegin();
+require_once "classes/Helpers.php";
+
+FAQHTMLBegins();
 
 if (isset($_GET["accept"])){
     $state = 2;
@@ -41,6 +43,5 @@ foreach($keyword_faqs as $kf){
 
 </table>
 
-
-</body>
-</html>
+<?php
+FAQHTMLEnds();

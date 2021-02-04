@@ -2,8 +2,9 @@
 require_once "header.inc.php";
 require_once "classes/FAQ.php";
 require_once "classes/Page.php";
+require_once "classes/Helpers.php";
 
-HTMLBegin();
+FAQHTMLBegins();
 
 $faq = null;
 if (isset($_GET["faq"])){
@@ -60,6 +61,5 @@ foreach ($pages as $p){
 }
 
 echo("</table>");
-?>
-</body>
-</html>
+
+FAQHTMLEnds();

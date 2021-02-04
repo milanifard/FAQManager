@@ -3,7 +3,9 @@ require_once "header.inc.php";
 require_once "classes/FAQ.php";
 require_once "classes/Keyword.php";
 
-HTMLBegin();
+require_once "classes/Helpers.php";
+
+FAQHTMLBegins();
 
 $faq = null;
 if (isset($_GET["faq"])){
@@ -57,6 +59,5 @@ foreach ($keywords as $k){
 }
 
 echo("</table>");
-?>
-</body>
-</html>
+
+FAQHTMLEnds();
