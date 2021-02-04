@@ -10,6 +10,11 @@ HTMLBegin();
 
 $userGroups = UserGroup::getAll();
 
+if (isset($_GET["save"])){
+    echo("درخواست شما با موفقیت ارسال شد.");
+    //todo save ticket
+}
+
 if (isset($_GET["send"])){
 
     $userGroup = null;
@@ -34,7 +39,13 @@ if (isset($_GET["send"])){
             echo("<div><a href=\"ShowFAQ.php?id=".$f->id."&description=".$_GET["description"]."&title=".$_GET["title"]."\">".htmlentities($f->title)."</a></div>");
         }
         echo("</div>");
-
+        
+        echo("<form method=\"get\">");
+        echo("<input type=\"submit\" name=\"save\" id=\"save\" value=\"جواب ها مفید نبود\">");
+        echo("<input type=\"hidden\" name=\"group\" id=\"group\" value=\"".$userGroup->title."\">");
+        echo("<input type=\"hidden\" name=\"title\" id=\"title\" value=\"".$_GET["title"]."\">");
+        echo("<input type=\"hidden\" name=\"title\" id=\"title\" value=\"".$_GET["description"]."\">");
+        echo("</form>");
         //todo add save ticket buttom
     } else {
         //todo save ticket
