@@ -64,20 +64,22 @@ class FAQ
         return null;
     }
 
-    static function getRelatedFAQ($title, $description, $page, $userGroup){
+    static function getRelatedFAQ($title, $description, $pageId, $userGroupId){
         $mysql = pdodb::getInstance();
         $mysql->Prepare("select distinct f.*
         from keywords k
         inner join faqs_keywords fk on k.id = fk.keyword_id
         inner join faqs f on fk.faq_id= f.id
         inner join faq_user_groups fug on f.id = fug.faq_id
+        inner join faq_pages fp on f.id = fp.faq_id
         where (? like CONCAT('%',term,'%') 
         or ? like CONCAT('%',term,'%'))
         and fug.user_group_id = ? 
+        and fp.page_id = ? 
         and fk.state = 1;");
         // add page limit
 
-        $result = $mysql->ExecuteStatement(array($title, $description, $userGroup->id));
+        $result = $mysql->ExecuteStatement(array($title, $description, $userGroupId, $pageId));
 
         $faqs = array();
         while($row = $result->fetch()){

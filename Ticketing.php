@@ -1,32 +1,27 @@
 <?php
 require_once "header.inc.php";
 require_once "classes/FAQ.php";
+require_once "classes/Page.php";
 require_once "classes/UserGroup.php";
+require_once "classes/Ticket.php";
 
 HTMLBegin();
 
-//todo add page
+$showTickForm = true;
 
-
-$userGroups = UserGroup::getAll();
+function saveTicket(){
+    echo("درخواست شما با موفقیت ارسال شد.");
+    echo($_GET["page"]);
+    Ticket::save($_GET["title"], $_GET["description"], $_GET["group"], $_GET["page"]);
+}
 
 if (isset($_GET["save"])){
-    echo("درخواست شما با موفقیت ارسال شد.");
-    //todo save ticket
+    saveTicket();
 }
 
 if (isset($_GET["send"])){
 
-    $userGroup = null;
-    foreach ($userGroups as $u){
-        if ($u->title === $_GET["group"]){
-            $userGroup = $u;
-            break;
-        }
-    }
-
-    
-    $faqs = FAQ::getRelatedFAQ($_GET["title"], $_GET["description"], null, $userGroup);
+    $faqs = FAQ::getRelatedFAQ($_GET["title"], $_GET["description"], $_GET["page"], $_GET["group"]);
 
     if (count($faqs) > 0){
         echo("<div>");
@@ -42,18 +37,21 @@ if (isset($_GET["send"])){
         
         echo("<form method=\"get\">");
         echo("<input type=\"submit\" name=\"save\" id=\"save\" value=\"جواب ها مفید نبود\">");
-        echo("<input type=\"hidden\" name=\"group\" id=\"group\" value=\"".$userGroup->title."\">");
+        echo("<input type=\"hidden\" name=\"group\" id=\"group\" value=\"".$_GET["group"]."\">");
         echo("<input type=\"hidden\" name=\"title\" id=\"title\" value=\"".$_GET["title"]."\">");
-        echo("<input type=\"hidden\" name=\"title\" id=\"title\" value=\"".$_GET["description"]."\">");
+        echo("<input type=\"hidden\" name=\"description\" id=\"description\" value=\"".$_GET["description"]."\">");
+        echo("<input type=\"hidden\" name=\"page\" id=\"page\" value=\"".$_GET["page"]."\">");
         echo("</form>");
-        //todo add save ticket buttom
+
+        $showTickForm = false;
     } else {
-        //todo save ticket
-        echo("هیچی پیدا نشد");
+        saveTicket();
     }
 
 
-}else{
+}
+
+if ($showTickForm) {
     echo("<form method=\"get\">
     <div>
         <label for=\"title\">عنوان: </label>
@@ -67,12 +65,21 @@ if (isset($_GET["send"])){
         <label for=\"group\">گروه کاربر: </label>
         <select name=\"group\" id=\"group\">");
 
-    
+    $userGroups = UserGroup::getAll();
     foreach ($userGroups as $u){
-        echo("<option value=\"".$u->title."\">".$u->persionTitle."</option>");
+        echo("<option value=\"".$u->id."\">".$u->persionTitle."</option>");
     }
-    echo("</select>
-    </div>
+    echo("</select>");
+    
+    $pages = Page::getAll();
+    echo("<select name=\"page\" id=\"page\">");
+    foreach ($pages as $p){
+        echo("<option value=\"".$p->id."\">".$p->title."</option>");
+    }
+    echo("</select>");
+
+
+    echo("</div>
 
     <div>
         <input type=\"submit\" name=\"send\" id=\"send\" value=\"ارسال\">

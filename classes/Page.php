@@ -62,6 +62,18 @@ class Page{
         // print_r($pages);
         return $pages;
     }
+
+    static function getAll(){
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("select * from pages;");
+        $result = $mysql->ExecuteStatement(array());
+
+        $pages = array();
+        while($row = $result->fetch()){
+            array_push($pages, self::toPage($row));
+        }
+        return $pages;
+    }
 }
 
 
