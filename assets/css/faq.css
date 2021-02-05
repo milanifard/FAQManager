@@ -1,1 +1,54 @@
 @font-face{font-family:'Yekan';src:url("../fonts/Yekan.eot");src:url("../fonts/Yekan.eot?#iefix") format("embedded-opentype"), url("../fonts/Yekan.woff") format("woff"), url("../fonts/Yekan.ttf") format("truetype"), url("../fonts/Yekan.svg#svgFontName") format("svg")}*{font-family:"Yekan"}
+
+
+.heading {
+	font-family: 'Yekan';
+	font-size: 5vw;
+}
+
+.row_group{
+    margin-right: 2.5vw;
+    margin-bottom: 0.5vw;
+}
+
+.form__field {
+    font-family: inherit;
+    /* width: 100%; */
+    /* border: 0; */
+    border: vw solid #9b9b9b;
+    border-radius: 2vw;
+    outline: 0;
+    font-size: 1.3rem;
+    /* color: #fff; */
+    /* padding: 7px 0; */
+    width: 90%;
+    background: transparent;
+    /* font-size: 1vw; */
+    /* transition: border-color 0.2s; */
+  }
+  /* .form__field::placeholder {
+    color: transparent;
+  } */
+  /* .form__field::placeholder-shown ~ .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+  } */
+
+  .form__label {
+    /* position: absolute; */
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.5rem;
+    color: #9b9b9b;
+    display: block;
+  }
+.my_btn{
+    /* text-align: center; */
+    width: 20%;
+    font-family: 'Yekan';
+    font-size: 2rem;
+    margin-bottom: 2vw;
+    /* border-radius: 1vw; */
+}
