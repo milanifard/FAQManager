@@ -63,7 +63,7 @@ if (isset($_GET["save"])) {
                 <th>تعداد کلیک</th>
                 <th>عملیات</th>
             </tr>
-            </thead>
+            </thead
             <?php
             $faqs = FAQ::getAll(0);
             foreach ($faqs as $f) {
