@@ -55,6 +55,7 @@ if (isset($_GET["send"])) {
 
 if ($showTickForm) {
     ?>
+    <div class="container">
     <form method="GET" class="ticketing-form">
         <div class="form-group">
             <label for="title">
@@ -103,6 +104,7 @@ if ($showTickForm) {
 
         <input type="submit" class="btn btn-primary" value="ارسال">
     </form>
+    </div>
     <?php
 
 }
