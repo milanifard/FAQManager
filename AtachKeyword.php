@@ -15,69 +15,88 @@ if ($faq === null) {
     return;
 }
 ?>
-<div class="attach-keyword-container col-10 col-md-6">
-<table class="table table-striped text-center">
-    <tr>
-        <td>
-            سوال
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <?php echo $faq->title; ?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            جواب
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <?php echo $faq->answer; ?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            تعداد کلیک
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <?php echo $faq->click_count; ?>
-        </td>
-    </tr>
-</table>
-</div>
+    <div class="attach-keyword-container col-10 col-md-6">
+        <table class="table table-striped text-center">
+            <tr>
+                <td>
+                    سوال
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php echo $faq->title; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    جواب
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php echo $faq->answer; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    تعداد کلیک
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php echo $faq->click_count; ?>
+                </td>
+            </tr>
+        </table>
+    </div>
 
 <?php
 
 if (isset($_GET["keyword"])) {
     Keyword::atacheToFAQ($faq, $_GET["keyword"]);
 }
+?>
 
-echo("<form method=\"get\">");
-echo("<div>
-<label for=\"keyword\">کلمه کلیدی :</label><input type=\"text\" name=\"keyword\" id=\"keyword\">
-</div>");
-echo("<div>
-<input type=\"hidden\" name=\"faq\" id=\"faq\" value=\"" . $faq->id . "\">
-</div>");
-echo("<div>
-<input type=\"submit\" name=\"save\" id=\"save\" value=\"ذخیره\">
-</div>");
-echo("</form>");
+    <form method="GET" class="col-12 text-center">
+        <div class="container">
+            <div class="form-group">
+                <label for="keyword">
+                    کلمات کلیدی:
+                </label>
+                <input type="text" name="keyword" id="keyword">
+            </div>
+            <input type="hidden" name="faq" id="faq" value="<?php echo $faq->id ?>">
+            <input type="submit" class="btn btn-primary " value="ذخیره">
+        </div>
+    </form>
 
 
-echo("<table style=\"width: 100%\">");
+    <br>
+    <div class="container col-6 col-md-4">
+        <table class="table table-compact text-sm-center table-striped">
+            <thead>
+            <tr>
+                <td>#</td>
+                <td>
+                    کلمات کلیدی
+                </td>
+            </tr>
+            </thead>
+            <?php
 
-$keywords = Keyword::getAllAcceptedByFAQ($faq);
-foreach ($keywords as $k) {
-    echo("<tr>");
-    echo("<td>" . $k->term . "</td>");
-    echo("</tr>");
-}
+            $keywords = Keyword::getAllAcceptedByFAQ($faq);
+            $counter = 1;
+            foreach ($keywords as $k) {
+                echo("<tr>");
+                echo "<td>{$counter}</td>";
+                echo("<td>" . $k->term . "</td>");
+                echo("</tr>");
+                $counter++;
+            }
+            ?>
+        </table>
+    </div>
 
-echo("</table>");
+<?php
 
 FAQHTMLEnds();
