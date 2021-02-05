@@ -55,7 +55,7 @@ if (isset($_GET["send"])) {
 
 if ($showTickForm) {
     ?>
-    <form method="POST" class="ticketing-form">
+    <form method="GET" class="ticketing-form">
         <div class="form-group">
             <label for="title">
                 عنوان:
@@ -106,39 +106,6 @@ if ($showTickForm) {
     </form>
     <?php
 
-//    echo("<form method=\"get\">
-//    <div>
-//        <label for=\"title\">عنوان: </label>
-//        <input type=\"text\" name=\"title\" id=\"title\">
-//    </div>
-//    <div>
-//        <label for=\"description\">توضیحات :</label>
-//        <input type=\"text\" name=\"description\" id=\"description\">
-//    </div>
-//    <div>
-//        <label for=\"group\">گروه کاربر: </label>
-//        <select name=\"group\" id=\"group\">");
-//
-//    $userGroups = UserGroup::getAll();
-//    foreach ($userGroups as $u) {
-//        echo("<option value=\"" . $u->id . "\">" . htmlentities($u->persionTitle) . "</option>");
-//    }
-//    echo("</select>");
-//
-//    $pages = Page::getAll();
-//    echo("<select name=\"page\" id=\"page\">");
-//    foreach ($pages as $p) {
-//        echo("<option value=\"" . $p->id . "\">" . htmlentities($p->title) . "</option>");
-//    }
-//    echo("</select>");
-//
-//
-//    echo("</div>
-//
-//    <div>
-//        <input type=\"submit\" name=\"send\" id=\"send\" value=\"ارسال\">
-//    </div>
-//</form>");
 }
 
 FAQHTMLEnds();
