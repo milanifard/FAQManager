@@ -58,6 +58,20 @@ select id, '/KeywordManaging.php'
 from faq_temp
 where slug = 'suggest';
 
+insert into faq_temp(id, slug)
+select last_insert_id(), 'attach_page';
+insert into facilitypages(FacilityID, PageName)
+select id, '/AttachPage.php'
+from faq_temp
+where slug = 'show_faq';
+
+insert into faq_temp(id, slug)
+select last_insert_id(), 'show_keyword';
+insert into facilitypages(FacilityID, PageName)
+select id, '/AtachKeyword.php'
+from faq_temp
+where slug = 'show_keyword';
+
 insert into userfacilities(UserID, FacilityID)
 select 'omid', faq_temp.id
 from faq_temp
