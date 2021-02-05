@@ -42,43 +42,42 @@ if (isset($_GET["save"])) {
             <?php
             require_once "classes/UserGroup.php";
 
-            $userGroups = UserGroup::getAll();
-            foreach ($userGroups as $u) {
-                echo("<label for=\"" . $u->title . "\">" . $u->persionTitle . "</label><input type=\"checkbox\" id=\"" . $u->title . "\" name=\"" . $u->title . "\" value=\"" . $u->title . "\" checked>");
-            }
-            ?>
-        </div>
-
-        <div>
-            <input type="submit" name="save" class="btn btn-primary" id="save" value="ذخیره">
-        </div>
-    </form>
-
-    <table style="width: 100%" class="table table-striped">
-        <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>سوال</th>
-            <th>جواب</th>
-            <th>تعداد کلیک</th>
-            <th>عملیات</th>
-            <th></th>
-        </tr>
-        </thead>
-        <?php
-        $faqs = FAQ::getAll(0);
-        foreach ($faqs as $f) {
-            echo("<tr>");
-            echo("<td>" . $f->id . "</td>");
-            echo("<td>" . $f->title . "</td>");
-            echo("<td>" . $f->answer . "</td>");
-            echo("<td>" . $f->click_count . "</td>");
-            echo("<td><a target=\"_blank\" href=\"AtachKeyword.php?faq=" . $f->id . "\">کلمات کلیدی</a></td>");
-            echo("<td><a target=\"_blank\" href=\"AttachPage.php?faq=" . $f->id . "\">صفحات</a></td>");
-            echo("</tr>");
+        $userGroups = UserGroup::getAll();
+        foreach ($userGroups as $u) {
+            echo("<label for=\"" . $u->title . "\">" . $u->persionTitle . "</label><input type=\"checkbox\" id=\"" . $u->title . "\" name=\"" . $u->title . "\" value=\"" . $u->title . "\" checked>");
         }
         ?>
-    </table>
+    </div>
+
+    <div style="text-align: center;">
+        <input class="btn btn-primary my_btn" type="submit" name="save" id="save" value="ذخیره">
+    </div>
+</form>
+<div class="table_container">
+<table style="direction: rtl;" class="table table-striped" >
+    <tr>
+        <th>شناسه</th>
+        <th>سوال</th>
+        <th>جواب</th>
+        <th>تعداد کلیک</th>
+        <th>عملیات</th>
+    </tr>
+    <?php
+    $faqs = FAQ::getAll(0);
+    foreach ($faqs as $f) {
+        echo("<tr>");
+        echo("<td>" . $f->id . "</td>");
+        echo("<td>" . $f->title . "</td>");
+        echo("<td>" . $f->answer . "</td>");
+        echo("<td>" . $f->click_count . "</td>");
+        echo("<td><a target=\"_blank\" href=\"AtachKeyword.php?faq=" . $f->id . "\">کلمات کلیدی، </a>");
+        echo("<a target=\"_blank\" href=\"AttachPage.php?faq=" . $f->id . "\"> صفحات </a></td>");
+        echo("</tr>");
+    }
+    ?>
+</table>
+</div>
+
 
 <?php
 
