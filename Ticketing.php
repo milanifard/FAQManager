@@ -26,18 +26,18 @@ if (isset($_GET["send"])) {
     $faqs = FAQ::getRelatedFAQ($_GET["title"], $_GET["description"], $_GET["page"], $_GET["group"]);
 
     if (count($faqs) > 0) {
-        echo("<div>");
+        echo("<div class='col-12 text-center'>");
         echo("<div>" . htmlentities($_GET["title"]) . "</div>");
         echo("<div>" . htmlentities($_GET["description"]) . "</div>");
         echo("</div>");
 
-        echo("<div>");
+        echo("<div class='col-12 text-center'>");
         foreach ($faqs as $f) {
             echo("<div><a href=\"ShowFAQ.php?id=" . $f->id . "&description=" . $_GET["description"] . "&title=" . $_GET["title"] . "\">" . htmlentities($f->title) . "</a></div>");
         }
         echo("</div>");
 
-        echo("<form method=\"get\">");
+        echo("<form method=\"get\" class='col-12 text-center'>");
         echo("<input type=\"submit\" name=\"save\" id=\"save\" value=\"جواب ها مفید نبود\">");
         echo("<input type=\"hidden\" name=\"group\" id=\"group\" value=\"" . $_GET["group"] . "\">");
         echo("<input type=\"hidden\" name=\"title\" id=\"title\" value=\"" . $_GET["title"] . "\">");
