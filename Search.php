@@ -44,4 +44,7 @@ foreach ($tickets as $t) {
     echo("<td>" . htmlentities($t->time) . "</td>");
     echo("</tr>");
 }
+
+echo "</table>";
+
 FAQHTMLEnds();
