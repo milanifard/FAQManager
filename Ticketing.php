@@ -55,19 +55,20 @@ if (isset($_GET["send"])) {
 
 if ($showTickForm) {
     ?>
+    <div class="container">
     <form method="GET" class="ticketing-form">
         <div class="form-group">
             <label for="title">
                 عنوان:
             </label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" placeholder="عنوان">
         </div>
         <div class="form-group">
             <label for="description">
                 توضیحات:
             </label>
             <br>
-            <textarea name="description" id="description" cols="50" rows="5"></textarea>
+            <textarea name="description" id="description" cols="50" rows="5" placeholder="توضیحات"></textarea>
         </div>
         <div class="form-group">
             <label for="group">
@@ -103,6 +104,7 @@ if ($showTickForm) {
 
         <input type="submit" class="btn btn-primary" value="ارسال">
     </form>
+    </div>
     <?php
 
 }

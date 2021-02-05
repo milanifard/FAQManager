@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face{font-family:'Yekan';src:url("../fonts/Yekan.eot");src:url("../fonts/Yekan.eot?#iefix") format("embedded-opentype"), url("../fonts/Yekan.woff") format("woff"), url("../fonts/Yekan.ttf") format("truetype"), url("../fonts/Yekan.svg#svgFontName") format("svg")}*{font-family:"Yekan"}
 
 
@@ -56,3 +57,6 @@
 .table_container{
     text-align: center; margin-left:2vw; margin-right:2vw
 }
+=======
+@font-face{font-family:'Yekan';src:url("../fonts/Yekan.eot");src:url("../fonts/Yekan.eot?#iefix") format("embedded-opentype"), url("../fonts/Yekan.woff") format("woff"), url("../fonts/Yekan.ttf") format("truetype"), url("../fonts/Yekan.svg#svgFontName") format("svg")}*{font-family:"Yekan";direction:rtl}.show-faq{margin:50px auto}.ticketing-form{margin-top:50px;margin-bottom:50px}.ticketing-form label{font-weight:bold}.ticketing-form #title{width:20rem}.ticketing-form input[type=submit]{width:10rem}.ticketing-form select{height:50px!important;line-height:50px}.search-form{margin:25px auto}.search-form label{font-weight:bold}.search-form input[type=text]{text-align:right}.search-form input[type=submit]{width:100%}
+>>>>>>> 1ef8fb09632b32eda1dea780474d2dc1dd7027d4
