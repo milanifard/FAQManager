@@ -34,13 +34,6 @@ select id, '/AddFAQ.php'
 from faq_temp
 where slug = 'insert';
 
-insert into faq_temp(id, slug)
-select last_insert_id(), 'show_faq';
-insert into facilitypages(FacilityID, PageName)
-select id, '/ShowFAQ.php'
-from faq_temp
-where slug = 'show_faq';
-
 insert into systemfacilities(FacilityName, GroupID, OrderNo, PageAddress)
 select 'ارسال تیکت', faq_temp.id, 3, 'FAQManager/Ticketing.php'
 from faq_temp
