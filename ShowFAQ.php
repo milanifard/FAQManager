@@ -17,10 +17,17 @@ if ($faq == null){
 
 $faq->increaseClickCount();
 
-echo("<div>");
-echo("<div>".htmlentities($faq->title)."</div>");
-echo("<div>".htmlentities($faq->answer)."</div>");
-echo("</div>");
+?>
+<div class="col-md-5 col-8 show-faq">
+    <div class="col-12 text-primary text-center">
+        <?php echo htmlentities($faq->title) ?>
+    </div>
+    <div class="col-12 text-center">
+        <?php echo htmlentities($faq->answer) ?>
+    </div>
+</div>
+<div class="clearfix"></div>
+<?php
 
 if (isset($_GET["description"]) && isset($_GET["title"]) && !isset($_GET["usefull"])){
     echo("<div>");
