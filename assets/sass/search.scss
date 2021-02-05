@@ -1,0 +1,13 @@
+.search-form {
+  margin: 25px auto ;
+
+  label {
+    font-weight: bold;
+  }
+  input[type=text] {
+    text-align: right;
+  }
+  input[type=submit] {
+    width: 100%;
+  }
+}
