@@ -15,8 +15,8 @@ if ($faq === null) {
     return;
 }
 ?>
-
-<table class="table table-striped attach-keyword-container">
+<div class="attach-keyword-container col-10 col-md-6">
+<table class="table table-striped text-center">
     <tr>
         <td>
             سوال
@@ -47,17 +47,8 @@ if ($faq === null) {
             <?php echo $faq->click_count; ?>
         </td>
     </tr>
-    <tr>
-        <td>
-            کلمه کلیدی
-        </td>
-    </tr>
-    <tr>
-        <td>
-
-        </td>
-    </tr>
 </table>
+</div>
 
 <?php
 echo("<div>");
