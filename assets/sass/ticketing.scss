@@ -1,0 +1,16 @@
+.ticketing-form {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  label {
+    font-weight: bold;
+  }
+
+  input[type='submit'] {
+    width: 10rem;
+  }
+
+  select {
+    height: 50px !important;
+    line-height: 50px;
+  }
+}
