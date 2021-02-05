@@ -69,7 +69,7 @@ if (isset($_GET["title"]) && isset($_GET["url"])) {
             </div>
             <div class="form-group">
                 <label for="url">
-                    عنوان صفحه:
+                    آدرس صفحه:
                 </label>
                 <input type="text" name="url" id="url">
             </div>
