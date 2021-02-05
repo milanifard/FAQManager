@@ -16,13 +16,15 @@ FAQHTMLBegins();
         </form>
     </div>
 
-    <table style="width: 100%;">
-        <tr>
-            <th>شناسه</th>
-            <th>عنوان</th>
-            <th>توضیحات</th>
-            <th>تاریخ</th>
-        </tr>
+    <table class="table table-striped" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>شناسه</th>
+                <th>عنوان</th>
+                <th>توضیحات</th>
+                <th>تاریخ</th>
+            </tr>
+        </thead>
 
 <?php
 
