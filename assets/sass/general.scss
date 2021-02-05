@@ -35,3 +35,13 @@
     }
   }
 }
+
+.attach-keyword-container {
+  margin: 20px auto;
+
+  table tr {
+    &:nth-child(odd) {
+      font-weight: bold;
+    }
+  }
+}
