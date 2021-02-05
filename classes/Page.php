@@ -27,18 +27,19 @@ class Page{
 
     static function attachPageToFAQ($faq, $page_title, $page_url){
         $mysql = pdodb::getInstance();
-        $mysql->Prepare("select * from pages where title = ? and url = ?;");
-        $result = $mysql->ExecuteStatement(array($page_title, $page_url));
+        $mysql->Prepare("select * from pages where url = ?;");
+        $result = $mysql->ExecuteStatement(array($page_url));
         
         $page = null;
         if ($row = $result->fetch()){
             $page = self::toPage($row);
-        } else{
+        } 
+        else{
             $mysql->Prepare("insert into pages (title, url) values (?, ?);");
             $result = $mysql->ExecuteStatement(array($page_title, $page_url));
             
-            $mysql->Prepare("select * from pages where title = ? and url = ?;");
-            $result = $mysql->ExecuteStatement(array($page_title, $page_url));
+            $mysql->Prepare("select * from pages where url = ?;");
+            $result = $mysql->ExecuteStatement(array($page_url));
             $row = $result->fetch();
             $page = self::toPage($row);
         }
