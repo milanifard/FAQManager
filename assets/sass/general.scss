@@ -2,3 +2,36 @@
   font-family: "Yekan";
   direction: rtl;
 }
+
+.add-faq-form {
+  margin: 20px auto 50px;
+  input[type=submit] {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+.add-faq-target-choose {
+  margin: 20px auto;
+
+  label {
+    width: 90%;
+    position: relative;
+    height: 34px;
+    &:after {
+      content: '';
+      height: 1px;
+      //width: 50%;
+      position: absolute;
+      right: 0;
+      bottom: -2px;
+      left: -15px;
+
+      background: #e0e0e0;
+    }
+    &:last-of-type{
+      &:after {
+        display: none;
+      }
+    }
+  }
+}
