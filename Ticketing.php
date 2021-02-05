@@ -61,14 +61,14 @@ if ($showTickForm) {
             <label for="title">
                 عنوان:
             </label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" placeholder="عنوان">
         </div>
         <div class="form-group">
             <label for="description">
                 توضیحات:
             </label>
             <br>
-            <textarea name="description" id="description" cols="50" rows="5"></textarea>
+            <textarea name="description" id="description" cols="50" rows="5" placeholder="توضیحات"></textarea>
         </div>
         <div class="form-group">
             <label for="group">
