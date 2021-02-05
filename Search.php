@@ -6,37 +6,40 @@ require_once "classes/Helpers.php";
 FAQHTMLBegins();
 ?>
 
-<div>
-    <form method="get">
-        <label for="term">عنوان </label><input type="text" name="term" id="term">
-        <input type="submit" name="search" id="search" value="جستجو">
-    </form>
-</div>
+    <div>
+        <form method="get" class="col-10 col-md-4 text-center search-form">
+            <div class="form-group">
+                <label for="term">عنوان </label>
+                <input type="text" name="term" id="term" class="form-control" placeholder="عنوان">
+            </div>
+            <input type="submit" class="btn btn-primary" name="search" id="search" value="جستجو">
+        </form>
+    </div>
 
-<table style="width: 100%;">
-    <tr>
-        <th>شناسه</th>
-        <th>عنوان</th>
-        <th>توضیحات</th>
-        <th>تاریخ</th>
-    </tr>
+    <table style="width: 100%;">
+        <tr>
+            <th>شناسه</th>
+            <th>عنوان</th>
+            <th>توضیحات</th>
+            <th>تاریخ</th>
+        </tr>
 
-    <?php
+<?php
 
-    $tickets = null;
+$tickets = null;
 
-    if (isset($_GET["search"])){
-        $tickets = Ticket::getAllByContainsTerm($_GET["term"]);
-    }else{
-        $tickets = Ticket::getAll();
-    }
+if (isset($_GET["search"])) {
+    $tickets = Ticket::getAllByContainsTerm($_GET["term"]);
+} else {
+    $tickets = Ticket::getAll();
+}
 
-    foreach ($tickets as $t){
-        echo("<tr>");
-        echo("<td>".htmlentities($t->id)."</td>");
-        echo("<td>".htmlentities($t->title)."</td>");
-        echo("<td>".htmlentities($t->description)."</td>");
-        echo("<td>".htmlentities($t->time)."</td>");
-        echo("</tr>");
-    }
+foreach ($tickets as $t) {
+    echo("<tr>");
+    echo("<td>" . htmlentities($t->id) . "</td>");
+    echo("<td>" . htmlentities($t->title) . "</td>");
+    echo("<td>" . htmlentities($t->description) . "</td>");
+    echo("<td>" . htmlentities($t->time) . "</td>");
+    echo("</tr>");
+}
 FAQHTMLEnds();
