@@ -36,8 +36,8 @@ if (isset($_GET["accept"])) {
             echo("<td>" . htmlentities($faq->answer) . "</td>");
             echo("<td>" . htmlentities($keyword->term) . "</td>");
             echo("<td>");
-            echo("<a href=\"KeywordManaging.php?faq=" . $faq->id . "&keyword=" . $keyword->id . "&accept=true\">تایید</a>");
-            echo("<a href=\"KeywordManaging.php?faq=" . $faq->id . "&keyword=" . $keyword->id . "&accept=false\">رد</a>");
+            echo("<a href=\"KeywordManaging.php?faq=" . $faq->id . "&keyword=" . $keyword->id . "&accept=true\"><span class='btn btn-success'>تایید</span></a>");
+            echo("<a href=\"KeywordManaging.php?faq=" . $faq->id . "&keyword=" . $keyword->id . "&accept=false\"><span class='btn btn-danger'>رد</span></a>");
             echo("</td>");
             echo("</tr>");
         }
