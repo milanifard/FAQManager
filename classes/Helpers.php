@@ -12,7 +12,8 @@ function FAQHTMLBegins($title = 'تیکتینگ')
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title><?php echo $title; ?></title>
         <link rel="stylesheet" href="assets/css/faq.css"/>
-
+        <link rel="stylesheet" href="../css/bootstrap.css"/>
+        <link rel="stylesheet" href="../css/font-awesome.min.css"/>
     </head>
     <body>
 
