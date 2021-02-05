@@ -52,4 +52,3 @@
     margin-bottom: 2vw;
     /* border-radius: 1vw; */
 }
-@font-face{font-family:'Yekan';src:url("../fonts/Yekan.eot");src:url("../fonts/Yekan.eot?#iefix") format("embedded-opentype"), url("../fonts/Yekan.woff") format("woff"), url("../fonts/Yekan.ttf") format("truetype"), url("../fonts/Yekan.svg#svgFontName") format("svg")}*{font-family:"Yekan";direction:rtl}.search-form{margin:25px auto}.search-form label{font-weight:bold}.search-form input[type=text]{text-align:right}.search-form input[type=submit]{width:100%}
