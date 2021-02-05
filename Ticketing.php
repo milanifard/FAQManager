@@ -77,7 +77,6 @@ if ($showTickForm) {
                 <?php
                 $userGroups = UserGroup::getAll();
                 foreach ($userGroups as $u) {
-//                    echo("<option value=\"".$u->id."\">".htmlentities($u->persionTitle)."</option>");
                     $out_string = htmlentities($u->persionTitle);
                     echo("<option value='{$u->id}'>{$out_string}</option>");
                 }
