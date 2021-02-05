@@ -51,21 +51,6 @@ if ($faq === null) {
 </div>
 
 <?php
-echo("<div>");
-
-echo("<div>");
-echo("سوال " . $faq->title);
-echo("</div>");
-
-echo("<div>");
-echo("جواب " . $faq->answer);
-echo("</div>");
-
-echo("<div>");
-echo("تعداد کلیک " . $faq->click_count);
-echo("</div>");
-
-echo("</div>");
 
 if (isset($_GET["keyword"])) {
     Keyword::atacheToFAQ($faq, $_GET["keyword"]);
