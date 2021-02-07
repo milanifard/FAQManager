@@ -50,6 +50,12 @@ class Page{
         
     }
 
+    static function detachPageToFAQ($faq, $pageId){
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("delete from faq_pages where faq_id = ? and page_id = ?");
+        $mysql->ExecuteStatement(array($faq->id, $pageId));
+    }
+
     static function getAllPagesByFAQ($faq){
         $mysql = pdodb::getInstance();
         $mysql->Prepare("select p.* from faq_pages inner join pages p on faq_pages.page_id = p.id where faq_id = ?;");
