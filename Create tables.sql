@@ -1,3 +1,5 @@
+use sadaf;
+
 drop table if exists faqs;
 create table faqs
 (
