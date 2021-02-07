@@ -11,6 +11,10 @@ if (isset($_GET["faq"])) {
     $faq = FAQ::getById($_GET["faq"]);
 }
 
+if (isset($_GET["dpage"])){
+    Keyword::detachKeywordFromFAQ($faq, $_GET["dpage"]);
+}
+
 if ($faq === null) {
     return;
 }
@@ -90,6 +94,7 @@ if (isset($_GET["keyword"])) {
                 echo("<tr>");
                 echo "<td>{$counter}</td>";
                 echo("<td>" . $k->term . "</td>");
+                echo("<td><a href=\"AtachKeyword.php?faq=" . $faq->id . "&dpage=" . $k->id . "\">حذف</a></td>");
                 echo("</tr>");
                 $counter++;
             }
