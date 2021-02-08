@@ -15,6 +15,10 @@ if ($faq === null) {
     return;
 }
 
+if (isset($_GET["dpage"])){
+    PAGE::detachPageToFAQ($faq, $_GET["dpage"]);
+}
+
 ?>
     <div class="attach-keyword-container col-10 col-md-6">
         <table class="table table-striped text-center">
@@ -90,6 +94,9 @@ if (isset($_GET["title"]) && isset($_GET["url"])) {
                 <td>
                     آدرس
                 </td>
+                <td>
+                    عملیات
+                </td>
             </tr>
             </thead>
             <?php
@@ -102,6 +109,7 @@ if (isset($_GET["title"]) && isset($_GET["url"])) {
                 echo "<td>{$counter}</td>";
                 echo("<td>" . $p->title . "</td>");
                 echo("<td>" . $p->url . "</td>");
+                echo("<td><a href=\"AttachPage.php?faq=" . $faq->id . "&dpage=" . $p->id . "\">حذف</a></td>");
                 echo("</tr>");
                 $counter++;
             }

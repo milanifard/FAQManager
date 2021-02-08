@@ -1,3 +1,5 @@
+use sadaf;
+
 drop table if exists faq_temp;
 create table faq_temp(
     id int,
@@ -34,6 +36,16 @@ select id, '/AddFAQ.php'
 from faq_temp
 where slug = 'insert';
 
+insert into facilitypages(FacilityID, PageName)
+select id, '/AtachKeyword.php'
+from faq_temp
+where slug = 'insert';
+
+insert into facilitypages(FacilityID, PageName)
+select id, '/AttachPage.php'
+from faq_temp
+where slug = 'insert';
+
 insert into systemfacilities(FacilityName, GroupID, OrderNo, PageAddress)
 select 'ارسال تیکت', faq_temp.id, 3, 'FAQManager/Ticketing.php'
 from faq_temp
@@ -43,6 +55,11 @@ select last_insert_id(), 'ticketing';
 
 insert into facilitypages(FacilityID, PageName)
 select id, '/Ticketing.php'
+from faq_temp
+where slug = 'ticketing';
+
+insert into facilitypages(FacilityID, PageName)
+select id, '/ShowFAQ.php'
 from faq_temp
 where slug = 'ticketing';
 
@@ -60,17 +77,10 @@ where slug = 'suggest';
 
 insert into faq_temp(id, slug)
 select last_insert_id(), 'attach_page';
-insert into facilitypages(FacilityID, PageName)
-select id, '/AttachPage.php'
-from faq_temp
-where slug = 'show_faq';
 
 insert into faq_temp(id, slug)
 select last_insert_id(), 'show_keyword';
-insert into facilitypages(FacilityID, PageName)
-select id, '/AtachKeyword.php'
-from faq_temp
-where slug = 'show_keyword';
+
 
 insert into userfacilities(UserID, FacilityID)
 select 'omid', faq_temp.id

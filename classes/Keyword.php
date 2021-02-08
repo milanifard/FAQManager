@@ -86,5 +86,11 @@ class Keyword
         }
         return $keyword_faq;
     }
+
+    static function detachKeywordFromFAQ($faq, $wordId){
+        $mysql = pdodb::getInstance();
+        $mysql->Prepare("delete from faqs_keywords where faq_id = ? and keyword_id = ?");
+        $mysql->ExecuteStatement(array($faq->id, $wordId));
+    }
 }
 ?>
