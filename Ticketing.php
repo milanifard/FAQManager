@@ -28,7 +28,6 @@ function saveTicket()
 
 if (isset($_GET["save"])) {
     saveTicket();
-    echo $showTickForm == false;
 }
 
 if (isset($_GET["send"])) {
