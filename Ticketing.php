@@ -12,13 +12,23 @@ $showTickForm = true;
 
 function saveTicket()
 {
-    echo("درخواست شما با موفقیت ارسال شد.");
-    echo($_GET["page"]);
-    Ticket::save($_GET["title"], $_GET["description"], $_GET["group"], $_GET["page"]);
+    $saveRes = Ticket::save($_GET["title"], $_GET["description"], $_GET["group"], $_GET["page"]);
+    if ($saveRes){
+        ?>
+        <div class="container">
+            <div class="col-md-4 col-6">
+                <br>
+                درخواست شما با موفقیت ارسال شد
+                <br>
+            </div>
+        </div>
+        <?php
+    }
 }
 
 if (isset($_GET["save"])) {
     saveTicket();
+    echo $showTickForm == false;
 }
 
 if (isset($_GET["send"])) {
