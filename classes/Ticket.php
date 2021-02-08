@@ -14,13 +14,14 @@ class Ticket {
         $t->title = $row["title"];
         $t->description = $row["description"];
         $t->time = $row["created_date"];
-        return $t;
+//        return $t;
     }
 
     static function save($title, $description, $userGroupId, $pageId) {
         $mysql = pdodb::getInstance();
         $mysql->Prepare("insert into tickets (title, description, project_id, tkt_bug_report_page, creator_type) values (?, ?, -1, ?, ?);");
         $mysql->ExecuteStatement(array($title, $description, $pageId, $userGroupId));
+        return true;
     }
     
     static function getAllByContainsTerm($term){
